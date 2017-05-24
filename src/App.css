@@ -8,3 +8,7 @@ body {
 .fieldDiv {
   text-align: center;
 }
+
+.thingField {
+  margin: 1.5rem;
+}
