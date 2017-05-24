@@ -12,24 +12,20 @@ class App extends Component {
   }
 
   state = {
-    things: {
-      'thing-1': { id: 'thing-1', name: 'Milk'},
-      'thing-2': { id: 'thing-2', name: 'Bread'},
-      'thing-3': { id: 'thing-3', name: 'Bibb lettuce'}
-    },
-    thingCount: 4
+    things: {},
+    nextThing: 1
   }
 
   addThing(e){
     let thingsObj = {...this.state.things}
     let name = document.querySelector('.thingField').value
-    thingsObj[`thing-${this.state.thingCount}`] = { 
-      id: `thing-${this.state.thingCount}`, name: name
+    thingsObj[`thing-${this.state.nextThing}`] = { 
+      id: `thing-${this.state.nextThing}`, name: name
     }
 
     this.setState({
       things: thingsObj,
-      thingCount: ++this.state.thingCount
+      nextThing: ++this.state.nextThing
     },
       () => console.log(this.state))
   }
