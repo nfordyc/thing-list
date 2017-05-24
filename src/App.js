@@ -24,9 +24,8 @@ class App extends Component {
       if(thingsObj[things].name === name){
         delete thingsObj[things]
       }
-
-      this.setState({things: thingsObj})
     }
+    this.setState({things: thingsObj})
   }
 
   addThing(e){
