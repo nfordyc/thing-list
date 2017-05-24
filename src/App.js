@@ -9,11 +9,24 @@ class App extends Component {
   constructor(){
     super()
     this.addThing = this.addThing.bind(this)
+    this.removeThing = this.removeThing.bind(this)
   }
 
   state = {
     things: {},
     nextThing: 1
+  }
+
+  removeThing(e){
+    const name = e.target.closest('.details').querySelector('.name').textContent
+    const thingsObj = {...this.state.things}
+    for(let things in thingsObj){
+      if(thingsObj[things].name === name){
+        delete thingsObj[things]
+      }
+
+      this.setState({things: thingsObj})
+    }
   }
 
   addThing(e){
@@ -26,8 +39,7 @@ class App extends Component {
     this.setState({
       things: thingsObj,
       nextThing: ++this.state.nextThing
-    },
-      () => console.log(this.state))
+    })
   }
 
   render() {
@@ -38,7 +50,7 @@ class App extends Component {
           <input className="thingField" type="text" placeholder="Write thing here"/>
         </div>
         <AddButton click={this.addThing}/>
-        <ThingList things={this.state.things}/>
+        <ThingList things={this.state.things} remove={this.removeThing}/>
       </div>
     );
   }

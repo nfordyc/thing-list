@@ -9,7 +9,7 @@ const ThingList = (props) => {
             {
                 Object
                     .keys(props.things)
-                    .map(thingId => <Thing key={thingId} thing={props.things[thingId]}/>)
+                    .map(thingId => <Thing remove={props.remove} key={thingId} thing={props.things[thingId]}/>)
             }
         </ul>
     )
